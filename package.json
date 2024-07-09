@@ -1,0 +1,14 @@
+{
+  "name": "youtube_clone",
+  "version": "1.0.0",
+  "description": "youtube backend , hitesh sir chai aur backend cource",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "buddhadeb",
+  "license": "ISC"
+}
