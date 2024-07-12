@@ -8,17 +8,21 @@ const asyncHandaller = (requestHandeller) => {
 
 export { asyncHandaller };
 
-// const asyncHandaller = (fn) => {};
-// const asyncHandaller = (fn) => () => {};
-// const asyncHandaller = (fn) => async () => {};
+/*
+const asyncHandaller = (fn) => {};
+const asyncHandaller = (fn) => () => {};
+const asyncHandaller = (fn) => async () => {};
 
-// const asyncHandaller = (fn) => async (req, res, next) => {
-//    try {
-//       await fn(req, res, next);
-//    } catch (error) {
-//       res.status(error.code || 500).json({
-//          sucess: false,
-//          message: error.message,
-//       });
-//    }
-// };
+const asyncHandaller = (fn) => async (req, res, next) => {
+   try {
+      await fn(req, res, next);
+   } catch (error) {
+      res.status(error.code || 500).json({
+         sucess: false,
+         message: error.message,
+      });
+   }
+};
+
+
+*/
