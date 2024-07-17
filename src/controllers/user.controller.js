@@ -352,7 +352,6 @@ const updateUserCoverImage = asyncHandaller(async (req, res) => {
       .json(new ApiResponce(200, user, "Cover Image updated"));
 });
 
-// aggregation pipeline
 const getUserChanalProfile = asyncHandaller(async (req, res) => {
    const { username } = req.params;
 

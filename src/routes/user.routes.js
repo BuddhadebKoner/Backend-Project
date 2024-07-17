@@ -1,9 +1,16 @@
 import { Router } from "express";
 import {
+   chnageCurrentPassword,
+   getCurrentUser,
+   getUserChanalProfile,
+   getWatchHistory,
    loginUser,
    logoutUser,
    refreshAccessToken,
    registerUser,
+   UpdateAcountDetails,
+   updateUserAvatar,
+   updateUserCoverImage,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import fs from "fs";
@@ -39,5 +46,16 @@ router.route("/login").post(loginUser);
 // secrure route
 router.route("/logout").post(varifyJWT, logoutUser);
 router.route("/refresh-token").post(refreshAccessToken);
+router.route("/chnage-password").post(varifyJWT, chnageCurrentPassword);
+router.route("/current-user").get(varifyJWT, getCurrentUser);
+router.route("/update-acount").patch(varifyJWT, UpdateAcountDetails);
+router
+   .route("/avatar")
+   .patch(varifyJWT, upload.single("avatar"), updateUserAvatar);
+router
+   .route("/cover-image")
+   .patch(varifyJWT, upload.single("coverImage"), updateUserCoverImage);
+router.route("/c/:username").get(varifyJWT, getUserChanalProfile);
+router.route("/history").get(varifyJWT, getWatchHistory);
 
 export default router;
