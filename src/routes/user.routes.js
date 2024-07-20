@@ -3,7 +3,6 @@ import {
    chnageCurrentPassword,
    getCurrentUser,
    getUserChanalProfile,
-   getWatchHistory,
    loginUser,
    logoutUser,
    refreshAccessToken,
@@ -14,7 +13,7 @@ import {
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import fs from "fs";
-import { varifyJWT } from "../middlewares/auth.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
@@ -44,18 +43,18 @@ router.route("/register").post((req, res, next) => {
 router.route("/login").post(loginUser);
 
 // secrure route
-router.route("/logout").post(varifyJWT, logoutUser);
+router.route("/logout").post(verifyJWT, logoutUser);
 router.route("/refresh-token").post(refreshAccessToken);
-router.route("/chnage-password").post(varifyJWT, chnageCurrentPassword);
-router.route("/current-user").get(varifyJWT, getCurrentUser);
-router.route("/update-acount").patch(varifyJWT, UpdateAcountDetails);
+router.route("/chnage-password").post(verifyJWT, chnageCurrentPassword);
+router.route("/current-user").get(verifyJWT, getCurrentUser);
+router.route("/update-acount").patch(verifyJWT, UpdateAcountDetails);
 router
    .route("/avatar")
-   .patch(varifyJWT, upload.single("avatar"), updateUserAvatar);
+   .patch(verifyJWT, upload.single("avatar"), updateUserAvatar);
 router
    .route("/cover-image")
-   .patch(varifyJWT, upload.single("coverImage"), updateUserCoverImage);
-router.route("/c/:username").get(varifyJWT, getUserChanalProfile);
-router.route("/history").get(varifyJWT, getWatchHistory);
+   .patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage);
+router.route("/c/:username").get(verifyJWT, getUserChanalProfile);
 
 export default router;
+   
